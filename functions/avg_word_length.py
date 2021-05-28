@@ -5,7 +5,7 @@ def avg_word_length(
         col: str
         ) -> pd.DataFrame:
     out_df = df.copy()
-    new_col_name = col + '_avg_word_count'
+    new_col_name = col + '_avg_word_length'
     out_df[new_col_name] = out_df[col].apply(_avg_word_len)
     return out_df
 

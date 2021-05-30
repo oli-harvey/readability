@@ -7,7 +7,7 @@ def avg_char_per_sentence(
         char: str
         ) -> pd.DataFrame:
     out_df = df.copy()
-    new_col_name = col + f'_avg_{char}_per_sentence'
+    new_col_name = f'avg_{char}_per_sentence'
     out_df[new_col_name] = out_df[col].apply(_avg_char_per_sentence, char=char)
     return out_df
 

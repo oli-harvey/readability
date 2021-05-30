@@ -21,12 +21,12 @@ ADDITIONAL = re.compile(
     flags=re.I
 )
 
-def avg_syllables_word(
+def avg_syllables_sentence(
         df: pd.DataFrame,
         col: str
         ) -> pd.DataFrame:
     out_df = df.copy()
-    new_col_name = 'avg_syllables_word'
+    new_col_name = 'avg_syllables_sentence'
     out_df[new_col_name] = out_df[col].apply(_count_syllables)
     return out_df
 
@@ -36,5 +36,5 @@ def _count_syllables(x):
     additional = len(ADDITIONAL.findall(x))
     syllables = max(1, vowel_runs - exceptions + additional)
     
-    words = x.split()
-    return syllables / len(words)
+    sentences = re.split(r'[.?!]\s*', x)
+    return syllables / len(sentences)
